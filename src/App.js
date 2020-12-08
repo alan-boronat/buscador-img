@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Buscador from './components/Buscador';
 import Resultado from './components/Resultado';
-
+import icon from './img/magnifying32.png'
 
 class App extends Component {
 
@@ -77,7 +77,7 @@ class App extends Component {
     return (
       <div className="app container">
         <div className="jumbotron mt-2">
-          <p className="lead text-center">Buscador de imagenes</p>
+          <p className="lead text-center mb-5"><img src={icon} alt=""/><strong> Search-Images App</strong></p>
 
           <Buscador 
             datosBusqueda={this.datosBusqueda}
