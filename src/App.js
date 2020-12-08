@@ -7,12 +7,56 @@ class App extends Component {
 
   state = {
     termino : '',
-    imagenes : []
+    imagenes : [],
+    pagina : ''
+  }
+
+  scroll = () => {
+    const elemento = document.querySelector('.jumbotron');
+    elemento.scrollIntoView('smooth', 'start');
+  }
+
+  paginaAnterior = () => {
+    // leer ek state de la pagina actual
+    let pagina = this.state.pagina;
+
+    // leer si la pagina es 1, no se puede retroceder
+      if(pagina === 1) return null;
+
+    // restamos 1 a la pagina anterior
+      pagina -= 1;
+
+    // agregar el cambio al state
+      this.setState({
+        pagina
+      }, () => {
+        this.consultarApi();
+        this.scroll();
+      })
+    //console.log(pagina);
+  }
+
+  paginaSiguiente = () => {
+    // leer ek state de la pagina actual
+      let pagina = this.state.pagina;
+
+    // sumar uno a la pagina actual
+      pagina += 1;
+
+    // agregar el cambio al state
+      this.setState({
+        pagina
+      }, () => {
+        this.consultarApi();
+        this.scroll();
+      })
+    //console.log(pagina);
   }
 
   consultarApi = () => {
     const termino = this.state.termino;
-    const url = `https://pixabay.com/api/?key=19435393-b586ecc610c072877cf7c053b&q=${termino}`;
+    const pagina = this.state.pagina;
+    const url = `https://pixabay.com/api/?key=19435393-b586ecc610c072877cf7c053b&q=${termino}&per_page=30&page=${pagina}`;
 
     /* console.log(url); */
     fetch(url)
@@ -22,7 +66,8 @@ class App extends Component {
 
   datosBusqueda = (termino) => {
     this.setState({
-      termino
+      termino : termino,
+      pagina : 1
     }, () => {
       this.consultarApi();
     })
@@ -39,9 +84,13 @@ class App extends Component {
           />
 
         </div>
-        <Resultado 
-          imagenes={this.state.imagenes}
-        />
+          <div className="row justify-content-center">
+            <Resultado 
+              imagenes={this.state.imagenes}
+              paginaAnterior={this.paginaAnterior}
+              paginaSiguiente={this.paginaSiguiente}
+            />
+          </div>
       </div>
     );
   }
