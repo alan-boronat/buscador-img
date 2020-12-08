@@ -1,2 +1,2 @@
 # buscador-img
-App web para buscar imágenes
+SPA para buscar imágenes, desarrollada en ReactJS
