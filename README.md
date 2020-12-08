@@ -1,7 +1,7 @@
 # buscador-img
 SPA para buscar imágenes, desarrollada en ReactJS
 
-https://search-img-a07db.web.app/
+https://search-images-d6939.web.app/
 
 #Pasos para instalar y ejecutar el proyecto>
 
