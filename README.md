@@ -1,10 +1,7 @@
-# buscador-img
-SPA para buscar imágenes, desarrollada en ReactJS
+# 🔍 Buscador De Imágenes
 
-https://search-images-d6939.web.app/
+SPA para buscar imágenes 📸
 
-#Pasos para instalar y ejecutar el proyecto>
+Puedes ver la demo en este link: https://react-buscar-img.netlify.app/
 
-1- Descargar o clonar el repositorio 
-2- Ejecutar el comando npm install 
-3- Ejecutar el comando npm start
+Tecnologías: React JS - Bootstrap 4 - API Rest Pública Pixabay
